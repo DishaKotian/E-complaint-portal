@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Roads Department",
+    "email": "roads@example.com",
+    "password": "roads123",
+    "department": "Roads",
+    "role": "department",
+    "createdAt": "2026-01-04T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "name": "Water Department",
+    "email": "water@example.com",
+    "password": "water123",
+    "department": "Water",
+    "role": "department",
+    "createdAt": "2026-01-04T00:00:00Z"
+  },
+  {
+    "id": 3,
+    "name": "Electricity Department",
+    "email": "electricity@example.com",
+    "password": "electricity123",
+    "department": "Electricity",
+    "role": "department",
+    "createdAt": "2026-01-04T00:00:00Z"
+  }
+]
