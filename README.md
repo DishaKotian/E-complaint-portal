@@ -42,8 +42,6 @@
 
 ## 🌟 Overview
 
-## 🌟 Overview
-
 The **E-Complaint Portal** is a comprehensive web-based solution designed to bridge the gap between citizens and government authorities. It provides a transparent, efficient, and accountable system for registering, tracking, and resolving public grievances related to:
 
 - 🛣️ Road damage and potholes
