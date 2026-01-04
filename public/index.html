@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Complaint Portal - Your Voice. Your Community. Resolved.</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-bullhorn"></i>
+                <span>E-Complaint Portal</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="submit-complaint.html" data-i18n="nav.submit">Submit Complaint</a></li>
+                <li><a href="track-complaint.html" data-i18n="nav.track">Track Status</a></li>
+                <li><a href="public-dashboard.html" data-i18n="nav.dashboard">Public Dashboard</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+                <li class="language-selector"></li>
+                <li><a href="login.html" class="btn-login" data-i18n="nav.login">Login</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span data-i18n="hero.badge">Trusted by 10,000+ Citizens</span>
+                </div>
+                <h1 data-i18n="hero.title">Your Voice Matters.<br>Your Community Deserves Better.</h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">We believe every citizen deserves a clean, safe, and functional community. Report local issues easily and watch them get resolved faster than ever before.</p>
+                <div class="hero-stats-mini">
+                    <div class="mini-stat">
+                        <strong>2,500+</strong>
+                        <span>Issues Resolved</span>
+                    </div>
+                    <div class="mini-stat">
+                        <strong>85%</strong>
+                        <span>Success Rate</span>
+                    </div>
+                    <div class="mini-stat">
+                        <strong>3 Days</strong>
+                        <span>Avg Response</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="submit-complaint.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-plus-circle"></i> <span data-i18n="hero.submit">Report an Issue Now</span>
+                    </a>
+                    <a href="track-complaint.html" class="btn btn-secondary btn-large">
+                        <i class="fas fa-search"></i> <span data-i18n="hero.track">Track Your Complaint</span>
+                    </a>
+                </div>
+                <p class="hero-assurance">
+                    <i class="fas fa-shield-alt"></i> <span data-i18n="hero.assurance">100% Free · No Hidden Charges · Secure Platform</span>
+                </p>
+            </div>
+            <div class="hero-image">
+                <div class="hero-visual-container">
+                    <!-- Floating Activity Cards -->
+                    <div class="floating-card card-1">
+                        <div class="card-icon success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="card-content">
+                            <strong>Pothole Fixed!</strong>
+                            <span>MG Road - 2 hours ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-card card-2">
+                        <div class="card-icon warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="card-content">
+                            <strong>New Report</strong>
+                            <span>Streetlight - Park Area</span>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-card card-3">
+                        <div class="card-icon info">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="card-content">
+                            <strong>In Progress</strong>
+                            <span>Water Leak Repair</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Central Illustration -->
+                    <div class="hero-central-graphic">
+                        <div class="graphic-circle circle-1"></div>
+                        <div class="graphic-circle circle-2"></div>
+                        <div class="graphic-circle circle-3"></div>
+                        <div class="graphic-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <div class="pulse-ring"></div>
+                    </div>
+                    
+                    <!-- Live Stats Indicators -->
+                    <div class="live-indicator indicator-1">
+                        <div class="indicator-dot"></div>
+                        <span>24 Active Cases</span>
+                    </div>
+                    
+                    <div class="live-indicator indicator-2">
+                        <div class="indicator-dot"></div>
+                        <span>12 Resolved Today</span>
+                    </div>
+                    
+                    <!-- Trust Badges -->
+                    <div class="hero-badge-float badge-1">
+                        <i class="fas fa-award"></i>
+                        <span>Certified</span>
+                    </div>
+                    
+                    <div class="hero-badge-float badge-2">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems">
+        <div class="container">
+            <h2 data-i18n="problems.title">Common Issues We Address</h2>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <h3 data-i18n="problems.road">Road Damage</h3>
+                    <p data-i18n="problems.road.desc">Report potholes, damaged roads, and infrastructure issues</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3 data-i18n="problems.water">Water Leak</h3>
+                    <p data-i18n="problems.water.desc">Report water pipeline leaks and supply issues</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-traffic-light"></i>
+                    </div>
+                    <h3 data-i18n="problems.light">Streetlight Out</h3>
+                    <p data-i18n="problems.light.desc">Report non-functional or damaged street lights</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 data-i18n="problems.safety">Safety Concerns</h3>
+                    <p data-i18n="problems.safety.desc">Report safety hazards and security issues</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                    <h3 data-i18n="problems.garbage">Garbage Collection</h3>
+                    <p data-i18n="problems.garbage.desc">Report waste management and cleanliness issues</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 data-i18n="problems.power">Electricity</h3>
+                    <p data-i18n="problems.power.desc">Report power outages and electrical issues</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3 data-i18n="problems.drainage">Drainage Issues</h3>
+                    <p data-i18n="problems.drainage.desc">Report blocked drains, sewage problems, and flooding</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h3 data-i18n="problems.stray">Stray Animals</h3>
+                    <p data-i18n="problems.stray.desc">Report stray animal issues and animal control needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 data-i18n="benefits.title">Key Benefits</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 data-i18n="benefits.ai">AI Integration</h3>
+                    <p data-i18n="benefits.ai.desc">Automatic complaint categorization and priority assignment using intelligent algorithms</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 data-i18n="benefits.chatbot">24/7 Chatbot Support</h3>
+                    <p data-i18n="benefits.chatbot.desc">Get instant automated assistance anytime, anywhere with our intelligent chatbot</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 data-i18n="benefits.public">Public Dashboard</h3>
+                    <p data-i18n="benefits.public.desc">Citizens can see all complaints in their area with real-time status updates</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 data-i18n="benefits.transparency">Transparency</h3>
+                    <p data-i18n="benefits.transparency.desc">Track your complaint status in real-time with complete visibility</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 data-i18n="benefits.resolution">Faster Resolution</h3>
+                    <p data-i18n="benefits.resolution.desc">Direct assignment to relevant departments for quick action</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 data-i18n="benefits.services">Improved Services</h3>
+                    <p data-i18n="benefits.services.desc">Better accountability and service quality for citizens</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 data-i18n="howit.title">Complaint Resolution Process</h2>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-user"></i></div>
+                    <h3 data-i18n="howit.step1">Citizen</h3>
+                    <p data-i18n="howit.step1.desc">Register or login to the portal</p>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3 data-i18n="howit.step2">Submit</h3>
+                    <p data-i18n="howit.step2.desc">Fill complaint form with details</p>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-building"></i></div>
+                    <h3 data-i18n="howit.step3">Department</h3>
+                    <p data-i18n="howit.step3.desc">Assigned to relevant department</p>
+                </div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3 data-i18n="howit.step4">Resolution</h3>
+                    <p data-i18n="howit.step4.desc">Issue resolved and verified</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalComplaints">0</div>
+                    <div class="stat-label" data-i18n="home.stats.total">Total Complaints</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="resolvedComplaints">0</div>
+                    <div class="stat-label" data-i18n="home.stats.resolved">Resolved</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="inProgressComplaints">0</div>
+                    <div class="stat-label" data-i18n="home.stats.inprogress">In Progress</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avgResolutionTime">0</div>
+                    <div class="stat-label" data-i18n="home.stats.avgtime">Avg. Resolution (Days)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="home.testimonials.title">Real Stories from Real People</h2>
+                <p data-i18n="home.testimonials.subtitle">See how our platform has made a difference in people's lives</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"I reported a dangerous pothole near my kids' school. Within 48 hours, it was fixed! This platform truly cares about our community's safety."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <span>Parent, MG Road</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Finally, a platform where our voices are heard! Reported a water leak and got updates every step of the way. Transparency at its best."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Rajesh Kumar</h4>
+                            <span>Resident, Park Street</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The best thing about this portal is the ease of use. My elderly parents can now report issues without any hassle. Thank you for making it accessible!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Sneha Patel</h4>
+                            <span>Community Member</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-content">
+                <div class="trust-text">
+                    <h2 data-i18n="home.trust.title">Why Citizens Trust Us</h2>
+                    <div class="trust-points">
+                        <div class="trust-point">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4 data-i18n="home.trust.transparency.title">100% Transparency</h4>
+                                <p data-i18n="home.trust.transparency.desc">Track every update from submission to resolution</p>
+                            </div>
+                        </div>
+                        <div class="trust-point">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4 data-i18n="home.trust.verified.title">Verified Departments</h4>
+                                <p data-i18n="home.trust.verified.desc">Direct connection with official government bodies</p>
+                            </div>
+                        </div>
+                        <div class="trust-point">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4 data-i18n="home.trust.security.title">Data Security</h4>
+                                <p data-i18n="home.trust.security.desc">Your personal information is always protected</p>
+                            </div>
+                        </div>
+                        <div class="trust-point">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4 data-i18n="home.trust.support.title">24/7 Support</h4>
+                                <p data-i18n="home.trust.support.desc">We're here to help whenever you need us</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="trust-badges">
+                    <div class="badge-item">
+                        <i class="fas fa-award"></i>
+                        <span data-i18n="home.trust.certified">Certified Platform</span>
+                    </div>
+                    <div class="badge-item">
+                        <i class="fas fa-lock"></i>
+                        <span data-i18n="home.trust.ssl">SSL Secured</span>
+                    </div>
+                    <div class="badge-item">
+                        <i class="fas fa-users"></i>
+                        <span data-i18n="home.trust.users">10,000+ Active Users</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions Section -->
+    <section class="quick-actions-section">
+        <div class="container">
+            <h2 data-i18n="home.quickactions.title">Quick Actions</h2>
+            <p class="section-subtitle" data-i18n="home.quickactions.subtitle">Access our most popular features instantly</p>
+            <div class="quick-actions-grid">
+                <a href="submit-complaint.html" class="quick-action-card">
+                    <div class="qa-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h3 data-i18n="home.quickactions.file">File Complaint</h3>
+                    <p data-i18n="home.quickactions.file.desc">Report a new issue in 2 minutes</p>
+                    <span class="qa-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="track-complaint.html" class="quick-action-card">
+                    <div class="qa-icon"><i class="fas fa-search"></i></div>
+                    <h3 data-i18n="home.quickactions.track">Track Status</h3>
+                    <p data-i18n="home.quickactions.track.desc">Check your complaint progress</p>
+                    <span class="qa-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="help-faq.html" class="quick-action-card">
+                    <div class="qa-icon"><i class="fas fa-question-circle"></i></div>
+                    <h3 data-i18n="home.quickactions.help">Get Help</h3>
+                    <p data-i18n="home.quickactions.help.desc">Find answers to common questions</p>
+                    <span class="qa-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="contact.html" class="quick-action-card">
+                    <div class="qa-icon"><i class="fas fa-headset"></i></div>
+                    <h3 data-i18n="home.quickactions.contact">Contact Support</h3>
+                    <p data-i18n="home.quickactions.contact.desc">Speak with our team directly</p>
+                    <span class="qa-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners/Departments Section -->
+    <section class="partners-section">
+        <div class="container">
+            <h2 data-i18n="home.partners.title">Trusted by Municipal Departments</h2>
+            <p class="section-subtitle" data-i18n="home.partners.subtitle">Working with key civic departments for faster resolution</p>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <div class="partner-logo"><i class="fas fa-road"></i></div>
+                    <h4 data-i18n="home.partners.publicworks">Public Works</h4>
+                    <p data-i18n="home.partners.publicworks.desc">Roads & Infrastructure</p>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo"><i class="fas fa-lightbulb"></i></div>
+                    <h4 data-i18n="home.partners.electricity">Electricity Board</h4>
+                    <p data-i18n="home.partners.electricity.desc">Street Lighting & Power</p>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo"><i class="fas fa-tint"></i></div>
+                    <h4 data-i18n="home.partners.water">Water Authority</h4>
+                    <p data-i18n="home.partners.water.desc">Water Supply & Drainage</p>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo"><i class="fas fa-recycle"></i></div>
+                    <h4 data-i18n="home.partners.sanitation">Sanitation Dept.</h4>
+                    <p data-i18n="home.partners.sanitation.desc">Waste Management</p>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo"><i class="fas fa-shield-alt"></i></div>
+                    <h4 data-i18n="home.partners.police">Police Department</h4>
+                    <p data-i18n="home.partners.police.desc">Safety & Security</p>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo"><i class="fas fa-tree"></i></div>
+                    <h4 data-i18n="home.partners.parks">Parks & Gardens</h4>
+                    <p data-i18n="home.partners.parks.desc">Green Spaces</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-home-section">
+        <div class="container">
+            <h2 data-i18n="home.faq.title">Frequently Asked Questions</h2>
+            <p class="section-subtitle" data-i18n="home.faq.subtitle">Quick answers to help you get started</p>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-chevron-right faq-icon"></i>
+                        <h4 data-i18n="home.faq.q1">How do I file a complaint?</h4>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-i18n="home.faq.a1">Register/login, click "Submit Complaint", fill the form with details and photos, then submit. You'll receive a tracking ID instantly.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-chevron-right faq-icon"></i>
+                        <h4 data-i18n="home.faq.q2">How long does resolution take?</h4>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-i18n="home.faq.a2">Average resolution time is 5-7 business days. Critical issues are prioritized and resolved within 24-48 hours.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-chevron-right faq-icon"></i>
+                        <h4 data-i18n="home.faq.q3">Can I track my complaint?</h4>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-i18n="home.faq.a3">Yes! Use your complaint ID on the "Track Status" page to see real-time updates and department actions.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-chevron-right faq-icon"></i>
+                        <h4 data-i18n="home.faq.q4">Is my data secure?</h4>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-i18n="home.faq.a4">Absolutely. We use SSL encryption, secure servers, and comply with government data protection standards.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-cta">
+                <a href="help-faq.html" class="btn btn-primary"><span data-i18n="home.faq.viewall">View All FAQs</span> <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="success-stories-section">
+        <div class="container">
+            <h2 data-i18n="home.success.title">Real Problems, Real Solutions</h2>
+            <p class="section-subtitle" data-i18n="home.success.subtitle">See the impact we're making in our community</p>
+            <div class="success-grid">
+                <div class="success-card">
+                    <div class="success-images">
+                        <div class="before-after">
+                            <div class="image-container before">
+                                <span class="label" data-i18n="home.success.before">Before</span>
+                                <i class="fas fa-exclamation-triangle warning-icon"></i>
+                            </div>
+                            <div class="arrow-separator">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="image-container after">
+                                <span class="label" data-i18n="home.success.after">After</span>
+                                <i class="fas fa-check-circle success-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="success-content">
+                        <h4><i class="fas fa-road"></i> <span data-i18n="home.success.story1.title">MG Road Pothole Fixed</span></h4>
+                        <p data-i18n="home.success.story1.desc">Deep pothole causing accidents repaired within 48 hours after complaint</p>
+                        <div class="success-meta">
+                            <span><i class="fas fa-clock"></i> <span data-i18n="home.success.resolved">Resolved in</span> <span data-i18n="home.success.story1.time">2 days</span></span>
+                            <span><i class="fas fa-map-marker-alt"></i> <span data-i18n="home.success.story1.location">MG Road, Zone 3</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="success-card">
+                    <div class="success-images">
+                        <div class="before-after">
+                            <div class="image-container before">
+                                <span class="label" data-i18n="home.success.before">Before</span>
+                                <i class="fas fa-exclamation-triangle warning-icon"></i>
+                            </div>
+                            <div class="arrow-separator">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="image-container after">
+                                <span class="label" data-i18n="home.success.after">After</span>
+                                <i class="fas fa-check-circle success-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="success-content">
+                        <h4><i class="fas fa-lightbulb"></i> <span data-i18n="home.success.story2.title">Street Lighting Restored</span></h4>
+                        <p data-i18n="home.success.story2.desc">Entire street with non-functional lights restored for safer nights</p>
+                        <div class="success-meta">
+                            <span><i class="fas fa-clock"></i> <span data-i18n="home.success.resolved">Resolved in</span> <span data-i18n="home.success.story2.time">3 days</span></span>
+                            <span><i class="fas fa-map-marker-alt"></i> <span data-i18n="home.success.story2.location">Park Avenue</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="success-card">
+                    <div class="success-images">
+                        <div class="before-after">
+                            <div class="image-container before">
+                                <span class="label" data-i18n="home.success.before">Before</span>
+                                <i class="fas fa-exclamation-triangle warning-icon"></i>
+                            </div>
+                            <div class="arrow-separator">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="image-container after">
+                                <span class="label" data-i18n="home.success.after">After</span>
+                                <i class="fas fa-check-circle success-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="success-content">
+                        <h4><i class="fas fa-tint"></i> <span data-i18n="home.success.story3.title">Water Leakage Fixed</span></h4>
+                        <p data-i18n="home.success.story3.desc">Major water pipeline leak causing road damage was repaired immediately</p>
+                        <div class="success-meta">
+                            <span><i class="fas fa-clock"></i> <span data-i18n="home.success.resolved">Resolved in</span> <span data-i18n="home.success.story3.time">1 day</span></span>
+                            <span><i class="fas fa-map-marker-alt"></i> <span data-i18n="home.success.story3.location">Market Street</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <i class="fas fa-envelope newsletter-icon"></i>
+                    <h2 data-i18n="home.newsletter.title">Stay Updated on Community Progress</h2>
+                    <p data-i18n="home.newsletter.subtitle">Get monthly updates on resolved issues, new features, and civic improvements in your area</p>
+                </div>
+                <div class="newsletter-form">
+                    <form id="newsletterForm">
+                        <div class="form-group-inline">
+                            <input type="email" id="newsletterEmail" data-i18n-placeholder="home.newsletter.placeholder" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> <span data-i18n="home.newsletter.subscribe">Subscribe</span>
+                            </button>
+                        </div>
+                        <p class="newsletter-note">
+                            <i class="fas fa-lock"></i> <span data-i18n="home.newsletter.privacy">We respect your privacy. Unsubscribe anytime.</span>
+                        </p>
+                    </form>
+                    <div id="newsletterSuccess" class="newsletter-success" style="display: none;">
+                        <i class="fas fa-check-circle"></i> <span data-i18n="home.newsletter.success">Thank you for subscribing! Check your email for confirmation.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <i class="fas fa-heart cta-icon"></i>
+                <h2 data-i18n="home.cta.title">Together, We Can Build a Better Community</h2>
+                <p data-i18n="home.cta.subtitle">Every issue you report brings us one step closer to a safer, cleaner, and more beautiful neighborhood. Your voice creates real change.</p>
+                <div class="cta-buttons">
+                    <a href="submit-complaint.html" class="btn btn-light btn-large">
+                        <i class="fas fa-bullhorn"></i> <span data-i18n="home.cta.report">Report an Issue Today</span>
+                    </a>
+                    <a href="register.html" class="btn btn-outline btn-large" data-i18n="home.cta.join">Join Our Community</a>
+                </div>
+                <p class="cta-note" data-i18n="home.cta.note">Join 10,000+ citizens already making a difference</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-bullhorn"></i> E-Complaint Portal</h3>
+                    <p>Designed to improve transparency, accountability, and community well-being.</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="help-faq.html">Help & FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="submit-complaint.html">Submit Complaint</a></li>
+                        <li><a href="track-complaint.html">Track Status</a></li>
+                        <li><a href="login.html">Citizen Login</a></li>
+                        <li><a href="admin-login.html">Admin Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@ecomplaint.gov</li>
+                        <li><i class="fas fa-phone"></i> 1800-XXX-XXXX</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Team VoiceUp</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 E-Complaint Portal | Team VoiceUp | All Rights Reserved</p>
+                <p class="footer-credits">By: Disha J Kotian, Chaithali R Shettigar | Department of CSE | Srinivas University</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/language-switcher.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

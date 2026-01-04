@@ -1,0 +1,26 @@
+{
+  "name": "e-complaint-portal",
+  "version": "1.0.0",
+  "description": "E-Complaint Portal for Local Issues - A transparent platform for citizens to report and track civic complaints",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
+  },
+  "keywords": [
+    "complaint",
+    "civic",
+    "portal",
+    "government",
+    "transparency"
+  ],
+  "author": "Team VoiceUp - Disha J Kotian, Chaithali R Shettigar",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Complaint - E-Complaint Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-bullhorn"></i>
+                <span>E-Complaint Portal</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="submit-complaint.html" class="active" data-i18n="nav.submit">Submit Complaint</a></li>
+                <li><a href="track-complaint.html" data-i18n="nav.track">Track Status</a></li>
+                <li><a href="public-dashboard.html" data-i18n="nav.dashboard">Public Dashboard</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+                <li class="language-selector"></li>
+                <li><a href="login.html" class="btn-login" data-i18n="nav.login">Login</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 data-i18n="submit.header">Submit a Complaint</h1>
+            <p data-i18n="submit.subtitle">Help us serve you better by reporting civic issues</p>
+        </div>
+    </section>
+
+    <!-- Complaint Form Section -->
+    <section class="complaint-form-section">
+        <div class="container">
+            <div class="form-wrapper">
+                <div class="form-intro">
+                    <i class="fas fa-info-circle"></i>
+                    <h3 data-i18n="submit.before">Before You Submit</h3>
+                    <p data-i18n="submit.note">Please provide accurate details to help us resolve your issue quickly. All fields marked with * are mandatory.</p>
+                </div>
+
+                <form id="complaintForm" class="complaint-form">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> <span data-i18n="submit.personal">Personal Information</span></h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName" data-i18n="submit.fullname">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" data-i18n="submit.phone">Contact Number *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="10-digit mobile number" pattern="[0-9]{10}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" data-i18n="submit.email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Complaint Details -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-file-alt"></i> <span data-i18n="submit.details">Complaint Details</span></h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="category" data-i18n="submit.category">Complaint Category *</label>
+                                <select id="category" name="category" required>
+                                    <option value="">-- Select Category --</option>
+                                    <option value="Road Damage">Road Damage / Potholes</option>
+                                    <option value="Water Leak">Water Leak / Supply Issue</option>
+                                    <option value="Streetlight">Streetlight Not Working</option>
+                                    <option value="Garbage">Garbage Collection Issue</option>
+                                    <option value="Electricity">Electricity / Power Issue</option>
+                                    <option value="Drainage">Drainage / Sewage Problem</option>
+                                    <option value="Safety">Safety / Security Concern</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="priority">Priority</label>
+                                <select id="priority" name="priority">
+                                    <option value="Medium">Medium</option>
+                                    <option value="Low">Low</option>
+                                    <option value="High">High</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Location / Address *</label>
+                            <input type="text" id="location" name="location" required placeholder="Enter the exact location of the issue (e.g., Near Main Market, Street Name)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description *</label>
+                            <textarea id="description" name="description" rows="5" required placeholder="Describe the problem clearly — where and what happened? Please be as specific as possible."></textarea>
+                            <small>Minimum 20 characters</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="image">Upload Image (Optional)</label>
+                            <input type="file" id="image" name="image" accept="image/*">
+                            <small>Upload a photo of the issue for better understanding (Max 5MB, JPG/PNG)</small>
+                            <div id="imagePreview" class="image-preview"></div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Submit Complaint
+                        </button>
+                        <button type="reset" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i> Reset Form
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <div class="success-content">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Complaint Submitted Successfully!</h3>
+                        <p>Your complaint has been registered and assigned a unique tracking ID.</p>
+                        <div class="complaint-id-display">
+                            <strong>Complaint ID:</strong> <span id="generatedComplaintId"></span>
+                        </div>
+                        <p class="success-note">Please save this ID for future reference. You can track your complaint status using this ID.</p>
+                        <div class="success-actions">
+                            <a href="track-complaint.html" class="btn btn-primary">Track Status</a>
+                            <button onclick="location.reload()" class="btn btn-secondary">Submit Another</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help Section -->
+            <div class="form-help">
+                <h3><i class="fas fa-question-circle"></i> Need Help?</h3>
+                <div class="help-content">
+                    <div class="help-item">
+                        <i class="fas fa-check"></i>
+                        <p>Fill all required fields marked with *</p>
+                    </div>
+                    <div class="help-item">
+                        <i class="fas fa-check"></i>
+                        <p>Provide accurate location details for faster resolution</p>
+                    </div>
+                    <div class="help-item">
+                        <i class="fas fa-check"></i>
+                        <p>Attach a clear photo if possible</p>
+                    </div>
+                    <div class="help-item">
+                        <i class="fas fa-check"></i>
+                        <p>Use the tracking ID to monitor progress</p>
+                    </div>
+                </div>
+                <p class="help-contact">For urgent issues, call: <strong>1800-XXX-XXXX</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-bullhorn"></i> E-Complaint Portal</h3>
+                    <p>Designed to improve transparency, accountability, and community well-being.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="submit-complaint.html">Submit Complaint</a></li>
+                        <li><a href="track-complaint.html">Track Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@ecomplaint.gov</li>
+                        <li><i class="fas fa-phone"></i> 1800-XXX-XXXX</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 E-Complaint Portal | Team VoiceUp | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/language-switcher.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/complaint-form.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Dashboard - E-Complaint Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-bullhorn"></i>
+                <span>E-Complaint Portal</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="submit-complaint.html" data-i18n="nav.submit">Submit Complaint</a></li>
+                <li><a href="track-complaint.html" data-i18n="nav.track">Track Status</a></li>
+                <li><a href="public-dashboard.html" class="active" data-i18n="nav.dashboard">Public Dashboard</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+                <li><a href="login.html" class="btn-login" data-i18n="nav.login">Login</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <section class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-header-content">
+                <h1><i class="fas fa-chart-line"></i> <span data-i18n="dashboard.header">Public Dashboard</span></h1>
+                <p data-i18n="dashboard.subtitle">View all complaints in your area - Stay informed, Stay connected</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Stats Section -->
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <i class="fas fa-clipboard-list"></i>
+                <h3 id="totalComplaints">0</h3>
+                <p data-i18n="dashboard.total">Total Complaints</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <h3 id="pendingComplaints">0</h3>
+                <p data-i18n="dashboard.pending">Pending</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-tasks"></i>
+                <h3 id="inProgressComplaints">0</h3>
+                <p data-i18n="dashboard.progress">In Progress</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle"></i>
+                <h3 id="resolvedComplaints">0</h3>
+                <p data-i18n="dashboard.resolved">Resolved</p>
+            </div>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="filters-section">
+            <div class="filters-header">
+                <h3><i class="fas fa-filter"></i> <span data-i18n="dashboard.filters">Filter Complaints</span></h3>
+                <div class="filter-actions">
+                    <button class="btn-action" id="refreshBtn" title="Refresh Data">
+                        <i class="fas fa-sync-alt"></i> <span data-i18n="dashboard.refresh">Refresh</span>
+                    </button>
+                    <button class="btn-action" id="exportBtn" title="Export Data">
+                        <i class="fas fa-download"></i> <span data-i18n="dashboard.export">Export</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label for="filterCategory" data-i18n="dashboard.category">Category</label>
+                    <select id="filterCategory">
+                        <option value="" data-i18n="dashboard.allCategories">All Categories</option>
+                        <option value="Road Damage" data-i18n="category.roadDamage">Road Damage</option>
+                        <option value="Water Leak" data-i18n="category.waterLeak">Water Leak</option>
+                        <option value="Streetlight" data-i18n="category.streetlight">Streetlight</option>
+                        <option value="Garbage" data-i18n="category.garbage">Garbage</option>
+                        <option value="Electricity" data-i18n="category.electricity">Electricity</option>
+                        <option value="Drainage" data-i18n="category.drainage">Drainage</option>
+                        <option value="Safety" data-i18n="category.safety">Safety</option>
+                        <option value="Other" data-i18n="category.other">Other</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterStatus" data-i18n="dashboard.status">Status</label>
+                    <select id="filterStatus">
+                        <option value="" data-i18n="dashboard.allStatus">All Status</option>
+                        <option value="Pending" data-i18n="status.pending">Pending</option>
+                        <option value="Assigned" data-i18n="status.assigned">Assigned</option>
+                        <option value="In Progress" data-i18n="status.inProgress">In Progress</option>
+                        <option value="Resolved" data-i18n="status.resolved">Resolved</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterPriority" data-i18n="dashboard.priority">Priority</label>
+                    <select id="filterPriority">
+                        <option value="" data-i18n="dashboard.allPriority">All Priority</option>
+                        <option value="High" data-i18n="common.high">High</option>
+                        <option value="Medium" data-i18n="common.medium">Medium</option>
+                        <option value="Low" data-i18n="common.low">Low</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterLocation" data-i18n="dashboard.search">Search Location</label>
+                    <input type="text" id="filterLocation" data-i18n="dashboard.enterLocation" placeholder="Enter location...">
+                </div>
+            </div>
+            
+            <div class="filters-footer">
+                <div class="sort-group">
+                    <label for="sortBy"><i class="fas fa-sort"></i> <span data-i18n="dashboard.sortBy">Sort By</span>:</label>
+                    <select id="sortBy">
+                        <option value="date-desc" data-i18n="dashboard.newest">Newest First</option>
+                        <option value="date-asc" data-i18n="dashboard.oldest">Oldest First</option>
+                        <option value="priority-high" data-i18n="dashboard.highPriority">High Priority First</option>
+                        <option value="priority-low" data-i18n="dashboard.lowPriority">Low Priority First</option>
+                    </select>
+                </div>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid" title="Grid View">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" data-view="list" title="List View">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complaints Grid -->
+        <div id="complaintsContainer">
+            <div class="loading">
+                <i class="fas fa-spinner"></i>
+                <p>Loading complaints...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Complaint Detail Modal -->
+    <div id="complaintModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>E-Complaint Portal</h3>
+                    <p>Making civic services accessible to everyone.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="submit-complaint.html">Submit Complaint</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> support@ecomplaint.com</p>
+                    <p><i class="fas fa-phone"></i> 1800-XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 E-Complaint Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/language-switcher.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/public-dashboard.js"></script>
+</body>
+</html>

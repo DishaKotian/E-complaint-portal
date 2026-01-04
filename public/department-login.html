@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Login - E-Complaint Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-bullhorn"></i>
+                <span>E-Complaint Portal</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="submit-complaint.html" data-i18n="nav.submit">Submit Complaint</a></li>
+                <li><a href="track-complaint.html" data-i18n="nav.track">Track Status</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+                <li class="language-selector"></li>
+                <li><a href="login.html" class="btn-login" data-i18n="nav.login">Login</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Department Login Section -->
+    <section class="auth-section dept-auth-section">
+        <div class="container">
+            <div class="dept-login-container">
+                <div class="dept-auth-card">
+                    <div class="dept-auth-header">
+                        <div class="dept-icon-wrapper">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h1 data-i18n="dept.login.title">Department Login</h1>
+                        <p class="dept-subtitle" data-i18n="dept.login.subtitle">Access your assigned complaints and manage civic issues</p>
+                    </div>
+
+                    <form id="departmentLoginForm" class="dept-form">
+                        <div class="form-group">
+                            <label for="deptEmail">
+                                <i class="fas fa-envelope"></i> 
+                                <span data-i18n="dept.login.email">Department Email</span>
+                            </label>
+                            <input type="email" id="deptEmail" name="deptEmail" required placeholder="department@ecomplaint.gov">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">
+                                <i class="fas fa-building"></i> 
+                                <span data-i18n="dept.login.department">Department</span>
+                            </label>
+                            <select id="department" name="department" required>
+                                <option value="">-- Select Department --</option>
+                                <option value="Public Works">🏗️ Public Works</option>
+                                <option value="Water Supply">💧 Water Supply</option>
+                                <option value="Electricity">⚡ Electricity Board</option>
+                                <option value="Sanitation">🗑️ Sanitation</option>
+                                <option value="Police">👮 Police</option>
+                                <option value="Health">🏥 Health Department</option>
+                                <option value="Traffic">🚦 Traffic Management</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deptPassword">
+                                <i class="fas fa-lock"></i> 
+                                <span data-i18n="dept.login.password">Password</span>
+                            </label>
+                            <input type="password" id="deptPassword" name="deptPassword" required placeholder="Enter password">
+                        </div>
+
+                        <button type="submit" class="dept-login-btn">
+                            <i class="fas fa-sign-in-alt"></i> 
+                            <span data-i18n="dept.login.button">Access Department Portal</span>
+                        </button>
+                    </form>
+
+                    <div class="dept-demo-box">
+                        <div class="demo-header">
+                            <i class="fas fa-info-circle"></i>
+                            <span data-i18n="dept.login.demo">Demo Credentials</span>
+                        </div>
+                        <div class="demo-details">
+                            <div class="demo-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email: <strong>dept@ecomplaint.gov</strong></span>
+                            </div>
+                            <div class="demo-item">
+                                <i class="fas fa-lock"></i>
+                                <span>Password: <strong>dept123</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dept-footer">
+                        <a href="login.html" class="back-to-login">
+                            <i class="fas fa-arrow-left"></i> 
+                            <span data-i18n="dept.login.back">Back to Citizen Login</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-bullhorn"></i> E-Complaint Portal</h3>
+                    <p>Designed to improve transparency, accountability, and community well-being.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="submit-complaint.html">Submit Complaint</a></li>
+                        <li><a href="track-complaint.html">Track Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@ecomplaint.gov</li>
+                        <li><i class="fas fa-phone"></i> 1800-XXX-XXXX</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 E-Complaint Portal | Team VoiceUp | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/language-switcher.js"></script>
+    <script>
+        document.getElementById('departmentLoginForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('deptEmail').value;
+            const dept = document.getElementById('department').value;
+            const password = document.getElementById('deptPassword').value;
+            
+            // Demo department login
+            if (email === 'dept@ecomplaint.gov' && password === 'dept123') {
+                const deptUser = { email, department: dept, role: 'department' };
+                localStorage.setItem('department', JSON.stringify(deptUser));
+                showNotification('Department login successful!', 'success');
+                setTimeout(() => {
+                    window.location.href = 'department-dashboard.html';
+                }, 1000);
+            } else {
+                showNotification('Invalid credentials. Try: dept@ecomplaint.gov / dept123', 'error');
+            }
+        });
+    </script>
+</body>
+</html>

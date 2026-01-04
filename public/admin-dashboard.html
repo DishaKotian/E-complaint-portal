@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - E-Complaint Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Admin Navbar -->
+    <nav class="admin-navbar">
+        <div class="admin-nav-container">
+            <div class="nav-brand">
+                <div class="brand-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>Admin Portal</h1>
+                    <span>E-Complaint Management</span>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <button class="nav-icon-btn" onclick="showNotifications()" title="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-dot">5</span>
+                </button>
+                <div class="nav-user">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Admin</span>
+                        <span class="user-role">Administrator</span>
+                    </div>
+                </div>
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Navigation</h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="menu-section-title">MAIN</li>
+                <li class="active">
+                    <a href="#dashboard" data-section="dashboard" onclick="navigateToSection('dashboard', event)">
+                        <div class="menu-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span>Dashboard</span>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                </li>
+                <li class="menu-section-title">COMPLAINTS</li>
+                <li>
+                    <a href="#all-complaints" data-section="all-complaints" data-filter="all" onclick="navigateToSection('all-complaints', event)">
+                        <div class="menu-icon">
+                            <i class="fas fa-list-ul"></i>
+                        </div>
+                        <span>All Complaints</span>
+                        <span class="menu-badge">25</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#pending" data-section="complaints-table" data-filter="Pending" onclick="navigateToSection('complaints-table', event, 'Pending')">
+                        <div class="menu-icon warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <span>Pending</span>
+                        <span class="menu-badge warning">8</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#in-progress" data-section="complaints-table" data-filter="In Progress" onclick="navigateToSection('complaints-table', event, 'In Progress')">
+                        <div class="menu-icon info">
+                            <i class="fas fa-spinner"></i>
+                        </div>
+                        <span>In Progress</span>
+                        <span class="menu-badge info">12</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#resolved" data-section="complaints-table" data-filter="Resolved" onclick="navigateToSection('complaints-table', event, 'Resolved')">
+                        <div class="menu-icon success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <span>Resolved</span>
+                        <span class="menu-badge success">5</span>
+                    </a>
+                </li>
+                <li class="menu-section-title">MANAGEMENT</li>
+                <li>
+                    <a href="#analytics" data-section="analytics" onclick="navigateToSection('analytics', event)">
+                        <div class="menu-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#departments" data-section="departments" onclick="navigateToSection('departments', event)">
+                        <div class="menu-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <span>Departments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#users" data-section="users" onclick="navigateToSection('users', event)">
+                        <div class="menu-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li class="menu-section-title">SYSTEM</li>
+                <li>
+                    <a href="#settings" data-section="settings" onclick="navigateToSection('settings', event)">
+                        <div class="menu-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Stats Overview -->
+            <section id="dashboard" class="dashboard-stats">
+                <div class="stats-header">
+                    <div class="header-content">
+                        <h2><i class="fas fa-chart-pie"></i> Dashboard Overview</h2>
+                        <p class="header-subtitle">Real-time complaint management statistics</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="action-icon-btn" onclick="refreshDashboard()" title="Refresh Data">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                        <button class="action-icon-btn" onclick="exportReport()" title="Export Report">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="stats-grid-dashboard">
+                    <div class="stat-card-dashboard total">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="dashTotalComplaints">0</h3>
+                            <p>Total Complaints</p>
+                            <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 12% this week</span>
+                        </div>
+                    </div>
+                    <div class="stat-card-dashboard pending">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="dashPendingComplaints">0</h3>
+                            <p>Pending</p>
+                            <span class="stat-trend"><i class="fas fa-minus"></i> Requires attention</span>
+                        </div>
+                    </div>
+                    <div class="stat-card-dashboard progress">
+                        <div class="stat-icon">
+                            <i class="fas fa-spinner"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="dashInProgressComplaints">0</h3>
+                            <p>In Progress</p>
+                            <span class="stat-trend"><i class="fas fa-cog fa-spin"></i> Being resolved</span>
+                        </div>
+                    </div>
+                    <div class="stat-card-dashboard resolved">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="dashResolvedComplaints">0</h3>
+                            <p>Resolved</p>
+                            <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 85% success rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="showBulkAssign()">
+                            <i class="fas fa-users-cog"></i>
+                            <span>Bulk Assign</span>
+                        </button>
+                        <button class="action-btn" onclick="exportReport()">
+                            <i class="fas fa-file-export"></i>
+                            <span>Export Report</span>
+                        </button>
+                        <button class="action-btn" onclick="showAnalytics()">
+                            <i class="fas fa-chart-line"></i>
+                            <span>View Analytics</span>
+                        </button>
+                        <button class="action-btn" onclick="showNotifications()">
+                            <i class="fas fa-bell"></i>
+                            <span>Notifications</span>
+                            <span class="notification-badge" id="notificationCount">5</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filters -->
+            <section id="filters" class="filters-section">
+                <h2>Filter Complaints</h2>
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label>Category</label>
+                        <select id="filterCategory">
+                            <option value="">All Categories</option>
+                            <option value="Road Damage">Road Damage</option>
+                            <option value="Water Leak">Water Leak</option>
+                            <option value="Streetlight">Streetlight</option>
+                            <option value="Garbage">Garbage</option>
+                            <option value="Electricity">Electricity</option>
+                            <option value="Drainage">Drainage</option>
+                            <option value="Safety">Safety</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select id="filterStatus">
+                            <option value="">All Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Assigned">Assigned</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Resolved">Resolved</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Priority</label>
+                        <select id="filterPriority">
+                            <option value="">All Priorities</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Department</label>
+                        <select id="filterDepartment">
+                            <option value="">All Departments</option>
+                            <option value="Public Works">Public Works</option>
+                            <option value="Water Supply">Water Supply</option>
+                            <option value="Electricity">Electricity Board</option>
+                            <option value="Sanitation">Sanitation</option>
+                            <option value="Police">Police</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <button class="btn btn-primary" onclick="applyFilters()">
+                            <i class="fas fa-filter"></i> Apply Filters
+                        </button>
+                        <button class="btn btn-secondary" onclick="clearFilters()">
+                            <i class="fas fa-times"></i> Clear
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Complaints Table -->
+            <section id="complaints-table" class="complaints-table-section">
+                <div class="section-header">
+                    <h2>All Complaints</h2>
+                    <div class="table-actions">
+                        <div class="search-container">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchBox" placeholder="Search by ID, name, location..." onkeyup="instantSearch()">
+                        </div>
+                        <button class="btn btn-secondary" onclick="toggleBulkMode()">
+                            <i class="fas fa-check-square"></i> <span id="bulkModeText">Bulk Select</span>
+                        </button>
+                        <button class="btn btn-primary" onclick="exportToCSV()">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                        <button class="btn btn-success" onclick="showAddComplaint()">
+                            <i class="fas fa-plus"></i> Add New
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bulk Actions Bar -->
+                <div class="bulk-actions-bar" id="bulkActionsBar" style="display: none;">
+                    <div class="bulk-info">
+                        <span id="selectedCount">0</span> complaints selected
+                    </div>
+                    <div class="bulk-buttons">
+                        <button class="btn btn-primary" onclick="bulkUpdateStatus()">
+                            <i class="fas fa-edit"></i> Update Status
+                        </button>
+                        <button class="btn btn-info" onclick="bulkAssignDepartment()">
+                            <i class="fas fa-building"></i> Assign Department
+                        </button>
+                        <button class="btn btn-danger" onclick="bulkDelete()">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                        <button class="btn btn-secondary" onclick="deselectAll()">
+                            <i class="fas fa-times"></i> Deselect All
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="complaints-table">
+                        <thead>
+                            <tr>
+                                <th class="bulk-select-col" style="display: none;">
+                                    <input type="checkbox" id="selectAll" onchange="toggleSelectAll()">
+                                </th>
+                                <th onclick="sortTable('id')">ID <i class="fas fa-sort"></i></th>
+                                <th onclick="sortTable('date')">Date <i class="fas fa-sort"></i></th>
+                                <th>Citizen</th>
+                                <th>Category</th>
+                                <th>Location</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Department</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="complaintsTableBody">
+                            <!-- Dynamic content -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button class="btn-page" onclick="previousPage()">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <span id="pageInfo">Page 1 of 1</span>
+                    <button class="btn-page" onclick="nextPage()">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section id="analytics" class="charts-section">
+                <h2>Analytics & Reports</h2>
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>Complaints by Category</h3>
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Monthly Trends</h3>
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Resolution Rate</h3>
+                        <canvas id="resolutionChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Department Performance</h3>
+                        <canvas id="departmentChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Departments Section -->
+            <section id="departments" class="departments-section" style="display: none;">
+                <h2><i class="fas fa-building"></i> Departments Management</h2>
+                <div class="departments-grid">
+                    <div class="dept-card">
+                        <i class="fas fa-road"></i>
+                        <h3>Public Works</h3>
+                        <p>45 Active Complaints</p>
+                        <button class="btn btn-primary">View Details</button>
+                    </div>
+                    <div class="dept-card">
+                        <i class="fas fa-tint"></i>
+                        <h3>Water Supply</h3>
+                        <p>23 Active Complaints</p>
+                        <button class="btn btn-primary">View Details</button>
+                    </div>
+                    <div class="dept-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Electricity Board</h3>
+                        <p>18 Active Complaints</p>
+                        <button class="btn btn-primary">View Details</button>
+                    </div>
+                    <div class="dept-card">
+                        <i class="fas fa-dumpster"></i>
+                        <h3>Sanitation</h3>
+                        <p>32 Active Complaints</p>
+                        <button class="btn btn-primary">View Details</button>
+                    </div>
+                    <div class="dept-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Police</h3>
+                        <p>12 Active Complaints</p>
+                        <button class="btn btn-primary">View Details</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Users Section -->
+            <section id="users" class="users-section" style="display: none;">
+                <h2><i class="fas fa-users"></i> User Management</h2>
+                <div class="users-controls">
+                    <input type="text" placeholder="Search users..." class="search-input">
+                    <button class="btn btn-success"><i class="fas fa-user-plus"></i> Add User</button>
+                </div>
+                <div class="table-responsive">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Complaints Filed</th>
+                                <th>Join Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>USR001</td>
+                                <td>John Doe</td>
+                                <td>john@example.com</td>
+                                <td>+91 98765 43210</td>
+                                <td>12</td>
+                                <td>Jan 15, 2025</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td>
+                                    <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-icon" title="Disable"><i class="fas fa-ban"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="settings-section" style="display: none;">
+                <h2><i class="fas fa-cog"></i> System Settings</h2>
+                <div class="settings-groups">
+                    <div class="settings-group">
+                        <h3>General Settings</h3>
+                        <div class="setting-item">
+                            <label>Site Name</label>
+                            <input type="text" value="E-Complaint Portal" class="form-control">
+                        </div>
+                        <div class="setting-item">
+                            <label>Admin Email</label>
+                            <input type="email" value="admin@ecomplaint.com" class="form-control">
+                        </div>
+                        <div class="setting-item">
+                            <label>Timezone</label>
+                            <select class="form-control">
+                                <option>Asia/Kolkata (GMT+5:30)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-group">
+                        <h3>Notification Settings</h3>
+                        <div class="setting-item">
+                            <label><input type="checkbox" checked> Email notifications for new complaints</label>
+                        </div>
+                        <div class="setting-item">
+                            <label><input type="checkbox" checked> SMS alerts for high priority</label>
+                        </div>
+                        <div class="setting-item">
+                            <label><input type="checkbox"> Daily summary reports</label>
+                        </div>
+                    </div>
+                    <div class="settings-group">
+                        <h3>Security Settings</h3>
+                        <div class="setting-item">
+                            <button class="btn btn-primary">Change Password</button>
+                        </div>
+                        <div class="setting-item">
+                            <button class="btn btn-secondary">Enable Two-Factor Authentication</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-actions">
+                    <button class="btn btn-success"><i class="fas fa-save"></i> Save Changes</button>
+                    <button class="btn btn-secondary">Reset to Default</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Complaint Detail Modal -->
+    <div id="complaintModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Complaint Details</h2>
+                <span class="modal-close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Status Modal -->
+    <div id="updateModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Update Complaint</h2>
+                <span class="modal-close" onclick="closeUpdateModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="updateForm">
+                    <input type="hidden" id="updateComplaintId">
+                    
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="updateStatus">
+                            <option value="Pending">Pending</option>
+                            <option value="Assigned">Assigned</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Resolved">Resolved</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Assign Department</label>
+                        <select id="updateDepartment">
+                            <option value="">Select Department</option>
+                            <option value="Public Works">Public Works</option>
+                            <option value="Water Supply">Water Supply</option>
+                            <option value="Electricity">Electricity Board</option>
+                            <option value="Sanitation">Sanitation</option>
+                            <option value="Police">Police</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Priority</label>
+                        <select id="updatePriority">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Admin Notes</label>
+                        <textarea id="updateNotes" rows="4" placeholder="Add notes about this update..."></textarea>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Update
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="closeUpdateModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

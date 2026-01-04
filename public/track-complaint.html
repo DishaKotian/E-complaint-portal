@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Complaint - E-Complaint Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-bullhorn"></i>
+                <span>E-Complaint Portal</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="submit-complaint.html" data-i18n="nav.submit">Submit Complaint</a></li>
+                <li><a href="track-complaint.html" class="active" data-i18n="nav.track">Track Status</a></li>
+                <li><a href="public-dashboard.html" data-i18n="nav.dashboard">Public Dashboard</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+                <li class="language-selector"></li>
+                <li><a href="login.html" class="btn-login" data-i18n="nav.login">Login</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 data-i18n="track.header">Track Your Complaint</h1>
+            <p data-i18n="track.subtitle">Enter your complaint ID to check the status</p>
+        </div>
+    </section>
+
+    <!-- Track Section -->
+    <section class="track-section">
+        <div class="container">
+            <div class="track-wrapper">
+                <!-- Search Form -->
+                <div class="track-search">
+                    <h3><i class="fas fa-search"></i> <span data-i18n="track.searchTitle">Search by Complaint ID</span></h3>
+                    <form id="trackForm" class="track-form">
+                        <div class="search-input-group">
+                            <input type="text" id="complaintId" data-i18n="track.placeholder" placeholder="Enter Complaint ID (e.g., CPL20260001)" required>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search"></i> <span data-i18n="track.button">Track</span>
+                            </button>
+                        </div>
+                    </form>
+                    <p class="track-hint"><i class="fas fa-info-circle"></i> <span data-i18n="track.hint">You can find your complaint ID in the submission confirmation email or SMS</span></p>
+                </div>
+
+                <!-- Loading -->
+                <div id="loading" class="loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin fa-3x"></i>
+                    <p>Searching for your complaint...</p>
+                </div>
+
+                <!-- Error Message -->
+                <div id="errorMessage" class="error-message" style="display: none;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>Complaint Not Found</h3>
+                    <p>The complaint ID you entered doesn't exist in our system. Please check and try again.</p>
+                </div>
+
+                <!-- Complaint Details -->
+                <div id="complaintDetails" class="complaint-details" style="display: none;">
+                    <div class="details-header">
+                        <h2>Complaint Details</h2>
+                        <span class="status-badge" id="statusBadge">Pending</span>
+                    </div>
+
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fas fa-barcode"></i> Complaint ID</span>
+                            <span class="detail-value" id="detailId">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fas fa-calendar"></i> Submission Date</span>
+                            <span class="detail-value" id="detailDate">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fas fa-list"></i> Category</span>
+                            <span class="detail-value" id="detailCategory">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fas fa-flag"></i> Priority</span>
+                            <span class="detail-value" id="detailPriority">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fas fa-user"></i> Name</span>
+                            <span class="detail-value" id="detailName">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fas fa-phone"></i> Contact</span>
+                            <span class="detail-value" id="detailPhone">-</span>
+                        </div>
+                        <div class="detail-item full-width">
+                            <span class="detail-label"><i class="fas fa-map-marker-alt"></i> Location</span>
+                            <span class="detail-value" id="detailLocation">-</span>
+                        </div>
+                        <div class="detail-item full-width">
+                            <span class="detail-label"><i class="fas fa-align-left"></i> Description</span>
+                            <span class="detail-value" id="detailDescription">-</span>
+                        </div>
+                        <div class="detail-item" id="departmentContainer" style="display: none;">
+                            <span class="detail-label"><i class="fas fa-building"></i> Assigned Department</span>
+                            <span class="detail-value" id="detailDepartment">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Image Preview -->
+                    <div id="imageContainer" class="image-container" style="display: none;">
+                        <h4><i class="fas fa-image"></i> Attached Image</h4>
+                        <img id="complaintImage" src="" alt="Complaint Image">
+                    </div>
+
+                    <!-- Status Timeline -->
+                    <div class="status-timeline">
+                        <h3><i class="fas fa-timeline"></i> Status Timeline</h3>
+                        <div class="timeline">
+                            <div class="timeline-item active" id="timelineSubmitted">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h4>Submitted</h4>
+                                    <p id="timelineSubmittedDate">-</p>
+                                    <span>Complaint registered in the system</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item" id="timelineAssigned">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-user-check"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h4>Assigned</h4>
+                                    <p id="timelineAssignedDate">-</p>
+                                    <span>Complaint assigned to department</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item" id="timelineInProgress">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h4>In Progress</h4>
+                                    <p id="timelineInProgressDate">-</p>
+                                    <span>Work in progress</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item" id="timelineResolved">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h4>Resolved</h4>
+                                    <p id="timelineResolvedDate">-</p>
+                                    <span>Issue successfully resolved</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Updates Section -->
+                    <div id="updatesSection" class="updates-section" style="display: none;">
+                        <h3><i class="fas fa-comments"></i> Updates & Notes</h3>
+                        <div id="updatesList" class="updates-list"></div>
+                    </div>
+
+                    <!-- Feedback Section -->
+                    <div id="feedbackSection" class="feedback-section" style="display: none;">
+                        <h3><i class="fas fa-star"></i> Provide Feedback</h3>
+                        <p>Please rate your experience and help us improve our service</p>
+                        <form id="feedbackForm">
+                            <div class="rating-stars">
+                                <i class="far fa-star" data-rating="1"></i>
+                                <i class="far fa-star" data-rating="2"></i>
+                                <i class="far fa-star" data-rating="3"></i>
+                                <i class="far fa-star" data-rating="4"></i>
+                                <i class="far fa-star" data-rating="5"></i>
+                            </div>
+                            <input type="hidden" id="rating" name="rating" value="0">
+                            <textarea id="feedbackText" placeholder="Share your experience (optional)" rows="3"></textarea>
+                            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="track-stats">
+                <h3>System Statistics</h3>
+                <div class="stats-grid-mini">
+                    <div class="stat-mini">
+                        <i class="fas fa-file-alt"></i>
+                        <div>
+                            <strong id="totalComplaintsTrack">0</strong>
+                            <span>Total Complaints</span>
+                        </div>
+                    </div>
+                    <div class="stat-mini">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong id="resolvedComplaintsTrack">0</strong>
+                            <span>Resolved</span>
+                        </div>
+                    </div>
+                    <div class="stat-mini">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong id="avgTimeTrack">0</strong>
+                            <span>Avg. Days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-bullhorn"></i> E-Complaint Portal</h3>
+                    <p>Designed to improve transparency, accountability, and community well-being.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="submit-complaint.html">Submit Complaint</a></li>
+                        <li><a href="track-complaint.html">Track Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@ecomplaint.gov</li>
+                        <li><i class="fas fa-phone"></i> 1800-XXX-XXXX</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 E-Complaint Portal | Team VoiceUp | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/language-switcher.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/track-complaint.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Dashboard - E-Complaint Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-bullhorn"></i>
+                <span>E-Complaint Portal</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="active" data-i18n="nav.dashboard">Dashboard</a></li>
+                <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                <li class="language-selector"></li>
+                <li><a href="#" id="logoutBtn" class="btn-login" data-i18n="nav.logout">Logout</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Department Dashboard -->
+    <section class="dept-dashboard-section">
+        <div class="container">
+            <!-- Welcome Header -->
+            <div class="dept-welcome-header">
+                <div class="welcome-content">
+                    <div class="welcome-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="welcome-text">
+                        <h1 data-i18n="dept.dashboard.title">Department Dashboard</h1>
+                        <p class="dept-name-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <span id="deptName">Loading...</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="welcome-user">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-label" data-i18n="dept.dashboard.loggedIn">Logged in as</span>
+                        <span class="user-email" id="userEmail">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Stats Grid -->
+            <div class="dept-stats-grid">
+                <div class="dept-stat-card pending-card">
+                    <div class="stat-header">
+                        <div class="stat-icon-wrapper">
+                            <i class="fas fa-inbox"></i>
+                        </div>
+                        <div class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span data-i18n="dept.dashboard.new">New</span>
+                        </div>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="assignedCount">0</h3>
+                        <p data-i18n="dept.dashboard.pendingComplaints">Pending Complaints</p>
+                        <div class="stat-progress">
+                            <div class="progress-bar pending-progress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dept-stat-card progress-card">
+                    <div class="stat-header">
+                        <div class="stat-icon-wrapper">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-trend working">
+                            <i class="fas fa-sync fa-spin"></i>
+                            <span data-i18n="dept.dashboard.active">Active</span>
+                        </div>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="inProgressCount">0</h3>
+                        <p data-i18n="dept.dashboard.inProgressText">In Progress</p>
+                        <div class="stat-progress">
+                            <div class="progress-bar progress-progress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dept-stat-card resolved-card">
+                    <div class="stat-header">
+                        <div class="stat-icon-wrapper">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <div class="stat-trend success">
+                            <i class="fas fa-check"></i>
+                            <span data-i18n="dept.dashboard.done">Done</span>
+                        </div>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="resolvedCount">0</h3>
+                        <p data-i18n="dept.dashboard.resolvedToday">Resolved Today</p>
+                        <div class="stat-progress">
+                            <div class="progress-bar resolved-progress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dept-stat-card rate-card">
+                    <div class="stat-header">
+                        <div class="stat-icon-wrapper">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-trend excellent">
+                            <i class="fas fa-star"></i>
+                            <span data-i18n="dept.dashboard.rateLabel">Rate</span>
+                        </div>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="successRate">0%</h3>
+                        <p data-i18n="dept.dashboard.successRateText">Success Rate</p>
+                        <div class="stat-progress">
+                            <div class="progress-bar rate-progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions Bar -->
+            <div class="quick-actions-bar">
+                <h3><i class="fas fa-bolt"></i> <span data-i18n="dept.dashboard.quickActions">Quick Actions</span></h3>
+                <div class="quick-actions">
+                    <button class="quick-btn" onclick="document.getElementById('filterStatus').value='Pending'; applyFilters();">
+                        <i class="fas fa-inbox"></i>
+                        <span data-i18n="dept.dashboard.viewPending">View Pending</span>
+                    </button>
+                    <button class="quick-btn" onclick="document.getElementById('filterPriority').value='High'; applyFilters();">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span data-i18n="dept.dashboard.highPriority">High Priority</span>
+                    </button>
+                    <button class="quick-btn" onclick="resetFilters();">
+                        <i class="fas fa-list"></i>
+                        <span data-i18n="dept.dashboard.allComplaints">All Complaints</span>
+                    </button>
+                    <button class="quick-btn" onclick="document.getElementById('filterStatus').value='Resolved'; applyFilters();">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-i18n="dept.dashboard.resolvedBtn">Resolved</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Enhanced Filters -->
+            <div class="dept-filters-section">
+                <div class="filters-header">
+                    <h3><i class="fas fa-sliders-h"></i> <span data-i18n="dept.dashboard.filterComplaints">Filter Complaints</span></h3>
+                    <button class="reset-filters-btn" onclick="resetFilters()">
+                        <i class="fas fa-redo"></i> <span data-i18n="dept.dashboard.resetAll">Reset All</span>
+                    </button>
+                </div>
+                <div class="filters-grid">
+                    <div class="filter-box">
+                        <label><i class="fas fa-traffic-light"></i> <span data-i18n="common.status">Status</span></label>
+                        <select id="filterStatus">
+                            <option value="" data-i18n="dept.dashboard.allStatus">All Status</option>
+                            <option value="Pending">🔴 <span data-i18n="common.pending">Pending</span></option>
+                            <option value="In Progress">🟡 <span data-i18n="common.inprogress">In Progress</span></option>
+                            <option value="Resolved">🟢 <span data-i18n="common.resolved">Resolved</span></option>
+                        </select>
+                    </div>
+                    <div class="filter-box">
+                        <label><i class="fas fa-flag"></i> <span data-i18n="dept.dashboard.priority">Priority</span></label>
+                        <select id="filterPriority">
+                            <option value="" data-i18n="dept.dashboard.allPriorities">All Priorities</option>
+                            <option value="Low">🟢 <span data-i18n="common.low">Low</span></option>
+                            <option value="Medium">🟡 <span data-i18n="common.medium">Medium</span></option>
+                            <option value="High">🔴 <span data-i18n="common.high">High</span></option>
+                        </select>
+                    </div>
+                    <div class="filter-box search-box">
+                        <label><i class="fas fa-search"></i> <span data-i18n="dept.dashboard.search">Search</span></label>
+                        <input type="text" id="searchInput" data-i18n-placeholder="dept.dashboard.searchPlaceholder" placeholder="Search by ID, category, or location...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Complaints Table -->
+            <div class="dept-table-container">
+                <div class="table-header-section">
+                    <h2><i class="fas fa-list-alt"></i> <span data-i18n="dept.dashboard.myAssignedComplaints">My Assigned Complaints</span></h2>
+                    <div class="table-meta">
+                        <span class="results-count"><span data-i18n="dept.dashboard.showing">Showing</span> <strong id="resultCount">0</strong> <span data-i18n="dept.dashboard.complaintsText">complaints</span></span>
+                    </div>
+                </div>
+                <div class="modern-table-wrapper">
+                    <table class="dept-complaints-table">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-hashtag"></i> <span data-i18n="dept.dashboard.tableId">ID</span></th>
+                                <th><i class="fas fa-calendar"></i> <span data-i18n="dept.dashboard.tableDate">Date</span></th>
+                                <th><i class="fas fa-tags"></i> <span data-i18n="dept.dashboard.tableCategory">Category</span></th>
+                                <th><i class="fas fa-align-left"></i> <span data-i18n="dept.dashboard.tableDescription">Description</span></th>
+                                <th><i class="fas fa-map-marker-alt"></i> <span data-i18n="dept.dashboard.tableLocation">Location</span></th>
+                                <th><i class="fas fa-info-circle"></i> <span data-i18n="common.status">Status</span></th>
+                                <th><i class="fas fa-flag"></i> <span data-i18n="dept.dashboard.priority">Priority</span></th>
+                                <th><i class="fas fa-tools"></i> <span data-i18n="dept.dashboard.tableActions">Actions</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="complaintsTableBody">
+                            <tr>
+                                <td colspan="8" class="loading-cell">
+                                    <div class="loading-spinner">
+                                        <i class="fas fa-circle-notch fa-spin fa-3x"></i>
+                                        <p data-i18n="dept.dashboard.loadingComplaints">Loading your assigned complaints...</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced View Modal -->
+    <div id="viewModal" class="dept-modal">
+        <div class="dept-modal-content">
+            <div class="dept-modal-header">
+                <div class="modal-title">
+                    <i class="fas fa-eye"></i>
+                    <h2 data-i18n="dept.dashboard.complaintDetails">Complaint Details</h2>
+                </div>
+                <button class="modal-close" onclick="closeModal('viewModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="dept-modal-body" id="viewModalBody">
+                <!-- Details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Update Modal -->
+    <div id="updateModal" class="dept-modal">
+        <div class="dept-modal-content">
+            <div class="dept-modal-header update-header">
+                <div class="modal-title">
+                    <i class="fas fa-edit"></i>
+                    <h2 data-i18n="dept.dashboard.updateComplaint">Update Complaint</h2>
+                </div>
+                <button class="modal-close" onclick="closeModal('updateModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="dept-modal-body">
+                <form id="updateForm" class="update-form">
+                    <input type="hidden" id="updateComplaintId">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="updateStatus">
+                                <i class="fas fa-traffic-light"></i> <span data-i18n="common.status">Status</span>
+                            </label>
+                            <select id="updateStatus" required>
+                                <option value="Pending">🔴 <span data-i18n="common.pending">Pending</span></option>
+                                <option value="In Progress">🟡 <span data-i18n="common.inprogress">In Progress</span></option>
+                                <option value="Resolved">🟢 <span data-i18n="common.resolved">Resolved</span></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="updatePriority">
+                                <i class="fas fa-flag"></i> <span data-i18n="dept.dashboard.priority">Priority</span>
+                            </label>
+                            <select id="updatePriority">
+                                <option value="Low">🟢 <span data-i18n="common.low">Low</span></option>
+                                <option value="Medium">🟡 <span data-i18n="common.medium">Medium</span></option>
+                                <option value="High">🔴 <span data-i18n="common.high">High</span></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updateNotes">
+                            <i class="fas fa-file-alt"></i> <span data-i18n="dept.dashboard.resolutionNotes">Resolution Notes</span>
+                        </label>
+                        <textarea id="updateNotes" rows="5" data-i18n-placeholder="dept.dashboard.notesPlaceholder" placeholder="Add detailed notes about the resolution process, actions taken, or next steps..."></textarea>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="submit" class="dept-btn-primary">
+                            <i class="fas fa-save"></i> <span data-i18n="dept.dashboard.saveChanges">Save Changes</span>
+                        </button>
+                        <button type="button" class="dept-btn-secondary" onclick="closeModal('updateModal')">
+                            <i class="fas fa-times"></i> <span data-i18n="dept.dashboard.cancel">Cancel</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 E-Complaint Portal | Department Panel | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/language-switcher.js"></script>
+    <script src="js/department-dashboard.js"></script>
+</body>
+</html>

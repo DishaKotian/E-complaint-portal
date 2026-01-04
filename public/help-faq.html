@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & FAQ - E-Complaint Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-bullhorn"></i>
+                <span>E-Complaint Portal</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                <li><a href="submit-complaint.html" data-i18n="nav.submit">Submit Complaint</a></li>
+                <li><a href="track-complaint.html" data-i18n="nav.track">Track Status</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+                <li class="language-selector"></li>
+                <li><a href="login.html" class="btn-login" data-i18n="nav.login">Login</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header gradient-bg">
+        <div class="container">
+            <h1><i class="fas fa-question-circle"></i> Help & Frequently Asked Questions</h1>
+            <p>Find answers to common questions about the E-Complaint Portal</p>
+            
+            <!-- Search Bar -->
+            <div class="faq-search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="faqSearch" placeholder="Search for answers..." onkeyup="searchFAQ()">
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Topics -->
+    <section class="popular-topics">
+        <div class="container">
+            <h2><i class="fas fa-fire"></i> Popular Topics</h2>
+            <div class="topic-tags">
+                <button class="topic-tag" onclick="filterFAQ('all')"><i class="fas fa-th"></i> All Topics</button>
+                <button class="topic-tag" onclick="filterFAQ('general')"><i class="fas fa-info-circle"></i> General</button>
+                <button class="topic-tag" onclick="filterFAQ('submission')"><i class="fas fa-file-alt"></i> Submission</button>
+                <button class="topic-tag" onclick="filterFAQ('tracking')"><i class="fas fa-search"></i> Tracking</button>
+                <button class="topic-tag" onclick="filterFAQ('account')"><i class="fas fa-user"></i> Account</button>
+                <button class="topic-tag" onclick="filterFAQ('technical')"><i class="fas fa-cog"></i> Technical</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section class="help-section">
+        <div class="container">
+            <!-- Quick Start Guide -->
+            <div class="help-category">
+                <h2><i class="fas fa-rocket"></i> Getting Started</h2>
+                <div class="help-cards">
+                    <div class="help-card">
+                        <div class="help-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h3>1. Create an Account</h3>
+                        <p>Register with your email, phone number, and basic information. You'll receive a confirmation once your account is created.</p>
+                        <a href="register.html" class="help-link">Register Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="help-card">
+                        <div class="help-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>2. Submit a Complaint</h3>
+                        <p>Fill out the complaint form with details, category, location, and attach photos if available. Submit to receive your unique tracking ID.</p>
+                        <a href="submit-complaint.html" class="help-link">Submit Complaint <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="help-card">
+                        <div class="help-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>3. Track Your Complaint</h3>
+                        <p>Use your complaint ID to check the status, view updates, and see the resolution timeline in real-time.</p>
+                        <a href="track-complaint.html" class="help-link">Track Status <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="faq-section">
+                <h2><i class="fas fa-comments"></i> Frequently Asked Questions</h2>
+                
+                <!-- Quick Stats -->
+                <div class="faq-stats">
+                    <div class="faq-stat-item">
+                        <i class="fas fa-book"></i>
+                        <div>
+                            <strong id="totalFAQs">25+</strong>
+                            <span>Articles</span>
+                        </div>
+                    </div>
+                    <div class="faq-stat-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <strong>1000+</strong>
+                            <span>Users Helped</span>
+                        </div>
+                    </div>
+                    <div class="faq-stat-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>&lt;2 min</strong>
+                            <span>Avg. Read Time</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- General Questions -->
+                <h3 class="faq-category-title"><i class="fas fa-tag"></i> General Questions</h3>
+                <div class="faq-accordion" data-category="general">
+                    <div class="faq-item active">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <div class="faq-q-content">
+                                <i class="fas fa-question-circle"></i>
+                                <h4>What is the E-Complaint Portal?</h4>
+                            </div>
+                            <i class="fas fa-chevron-down faq-chevron"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The E-Complaint Portal is a digital platform that allows citizens to report local civic issues such as road damage, water leaks, streetlight problems, garbage collection issues, and other community concerns. It ensures transparency, accountability, and faster resolution of complaints through direct assignment to relevant departments.</p>
+                            <div class="faq-helpful">
+                                <span>Was this helpful?</span>
+                                <button class="helpful-btn" onclick="markHelpful(this, true)"><i class="fas fa-thumbs-up"></i> Yes</button>
+                                <button class="helpful-btn" onclick="markHelpful(this, false)"><i class="fas fa-thumbs-down"></i> No</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <div class="faq-q-content">
+                                <i class="fas fa-users"></i>
+                                <h4>Who can use this portal?</h4>
+                            </div>
+                            <i class="fas fa-chevron-down faq-chevron"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Any citizen can use this portal to report civic issues. There are three types of users:</p>
+                            <ul>
+                                <li><strong>Citizens:</strong> Can submit and track complaints</li>
+                                <li><strong>Department Officers:</strong> Can view and update complaints assigned to their department</li>
+                                <li><strong>Administrators:</strong> Can manage all complaints, assign them to departments, and generate reports</li>
+                            </ul>
+                            <div class="faq-helpful">
+                                <span>Was this helpful?</span>
+                                <button class="helpful-btn" onclick="markHelpful(this, true)"><i class="fas fa-thumbs-up"></i> Yes</button>
+                                <button class="helpful-btn" onclick="markHelpful(this, false)"><i class="fas fa-thumbs-down"></i> No</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <div class="faq-q-content">
+                                <i class="fas fa-dollar-sign"></i>
+                                <h4>Is the service free to use?</h4>
+                            </div>
+                            <i class="fas fa-chevron-down faq-chevron"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, the E-Complaint Portal is completely free for all citizens. There are no charges for registering, submitting complaints, or tracking their status.</p>
+                            <div class="faq-helpful">
+                                <span>Was this helpful?</span>
+                                <button class="helpful-btn" onclick="markHelpful(this, true)"><i class="fas fa-thumbs-up"></i> Yes</button>
+                                <button class="helpful-btn" onclick="markHelpful(this, false)"><i class="fas fa-thumbs-down"></i> No</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Complaint Submission -->
+                <h3 class="faq-category-title"><i class="fas fa-tag"></i> Submitting Complaints</h3>
+                <div class="faq-accordion" data-category="submission">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <div class="faq-q-content">
+                                <i class="fas fa-file-alt"></i>
+                                <h4>How do I submit a complaint?</h4>
+                            </div>
+                            <i class="fas fa-chevron-down faq-chevron"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Follow these simple steps:</p>
+                            <ol>
+                                <li>Go to the <a href="submit-complaint.html">Submit Complaint</a> page</li>
+                                <li>Fill in your personal details (name, email, phone)</li>
+                                <li>Select the complaint category and priority</li>
+                                <li>Enter the location and description of the issue</li>
+                                <li>Attach a photo if available (optional but recommended)</li>
+                                <li>Click "Submit Complaint"</li>
+                                <li>Save your complaint ID for tracking</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>What types of issues can I report?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can report various civic issues including:</p>
+                            <ul>
+                                <li>Road Damage (potholes, broken roads)</li>
+                                <li>Water Leak (pipeline leaks, water supply issues)</li>
+                                <li>Streetlight Out (non-functional or damaged lights)</li>
+                                <li>Garbage Collection (waste management issues)</li>
+                                <li>Drainage (blocked drains, flooding)</li>
+                                <li>Electricity (power outages, electrical faults)</li>
+                                <li>Safety Concerns (security issues, hazards)</li>
+                                <li>Other civic issues</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Do I need to attach a photo?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>While attaching a photo is optional, it is highly recommended. Photos help department officers better understand the issue and prioritize it accordingly. Clear images can significantly speed up the resolution process.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Can I submit multiple complaints?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can submit multiple complaints for different issues. Each complaint will receive a unique ID for tracking. However, please avoid submitting duplicate complaints for the same issue.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Can I edit my complaint after submission?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Currently, you cannot edit a complaint once it's submitted. If you need to make corrections or add information, please contact our support team at support@ecomplaint.gov with your complaint ID.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tracking & Status -->
+                <h3 class="faq-category-title">Tracking Complaints</h3>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>How do I track my complaint?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Visit the <a href="track-complaint.html">Track Status</a> page and enter your complaint ID. You'll see the current status, timeline, assigned department, and any updates from the authorities.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>What do the different statuses mean?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Complaint statuses include:</p>
+                            <ul>
+                                <li><strong>Submitted:</strong> Your complaint has been registered in the system</li>
+                                <li><strong>Assigned:</strong> Complaint has been assigned to the relevant department</li>
+                                <li><strong>In Progress:</strong> Department is actively working on resolving the issue</li>
+                                <li><strong>Resolved:</strong> Issue has been fixed and verified</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>What is the average resolution time?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Resolution time varies based on issue type and priority:</p>
+                            <ul>
+                                <li><strong>High Priority:</strong> 2-3 days</li>
+                                <li><strong>Medium Priority:</strong> 5-7 days</li>
+                                <li><strong>Low Priority:</strong> 7-14 days</li>
+                            </ul>
+                            <p>Complex issues may take longer. You'll receive updates throughout the process.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Will I receive notifications about updates?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you'll receive notifications when your complaint status changes. Make sure to provide a valid email address and phone number during submission. You can also check the status anytime using your complaint ID.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account & Privacy -->
+                <h3 class="faq-category-title">Account & Privacy</h3>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Is my personal information secure?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we take data security seriously. Your personal information is encrypted and stored securely. We only use your contact details for complaint-related communication and never share your data with third parties.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Do I need to create an account?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No, you can submit complaints without creating an account. However, registering allows you to view all your past complaints in one place and receive personalized updates.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>How do I reset my password?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Click on "Forgot Password" on the login page. Enter your registered email address, and you'll receive a password reset link. Follow the instructions in the email to create a new password.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Support -->
+                <h3 class="faq-category-title">Technical Support</h3>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>The website is not working properly. What should I do?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Try these troubleshooting steps:</p>
+                            <ol>
+                                <li>Clear your browser cache and cookies</li>
+                                <li>Try a different browser (Chrome, Firefox, Safari, Edge)</li>
+                                <li>Check your internet connection</li>
+                                <li>Disable browser extensions temporarily</li>
+                                <li>If the issue persists, contact support at support@ecomplaint.gov</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Can I use this portal on my mobile phone?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! The E-Complaint Portal is fully responsive and works seamlessly on smartphones, tablets, and desktop computers. Simply open your mobile browser and visit the portal.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>What image formats are supported for uploads?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can upload images in JPG, JPEG, PNG, and GIF formats. The maximum file size is 5MB. For best results, use clear, well-lit photos that show the issue clearly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Support -->
+            <div class="support-cta">
+                <div class="support-card">
+                    <i class="fas fa-headset fa-3x"></i>
+                    <h2>Still Have Questions?</h2>
+                    <p>Our support team is here to help you with any questions or concerns</p>
+                    <div class="support-buttons">
+                        <a href="contact.html" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> Contact Support
+                        </a>
+                        <a href="tel:1800-XXX-XXXX" class="btn btn-secondary">
+                            <i class="fas fa-phone"></i> Call Us
+                        </a>
+                    </div>
+                    <p class="support-hours">
+                        <i class="fas fa-clock"></i> Available Mon-Sat, 9:00 AM - 6:00 PM
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="quick-links-section">
+                <h2>Helpful Resources</h2>
+                <div class="quick-links-grid">
+                    <a href="about.html" class="quick-link-card">
+                        <i class="fas fa-info-circle"></i>
+                        <h4>About Us</h4>
+                        <p>Learn about our mission</p>
+                    </a>
+                    <a href="submit-complaint.html" class="quick-link-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>Submit Complaint</h4>
+                        <p>Report an issue</p>
+                    </a>
+                    <a href="track-complaint.html" class="quick-link-card">
+                        <i class="fas fa-search"></i>
+                        <h4>Track Status</h4>
+                        <p>Check your complaint</p>
+                    </a>
+                    <a href="contact.html" class="quick-link-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Contact Us</h4>
+                        <p>Get in touch</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-bullhorn"></i> E-Complaint Portal</h3>
+                    <p>Designed to improve transparency, accountability, and community well-being.</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="help-faq.html">Help & FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="submit-complaint.html">Submit Complaint</a></li>
+                        <li><a href="track-complaint.html">Track Status</a></li>
+                        <li><a href="login.html">Citizen Login</a></li>
+                        <li><a href="admin-login.html">Admin Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@ecomplaint.gov</li>
+                        <li><i class="fas fa-phone"></i> 1800-XXX-XXXX</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Team VoiceUp</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 E-Complaint Portal | Team VoiceUp | All Rights Reserved</p>
+                <p class="footer-credits">By: Disha J Kotian, Chaithali R Shettigar | Department of CSE | Srinivas University</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/language-switcher.js"></script>
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const wasActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Search FAQ functionality
+        function searchFAQ() {
+            const searchInput = document.getElementById('faqSearch').value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            let visibleCount = 0;
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('h4').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchInput) || answer.includes(searchInput)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                    
+                    // Highlight search term
+                    if (searchInput.length > 2) {
+                        const regex = new RegExp(searchInput, 'gi');
+                        const h4 = item.querySelector('h4');
+                        h4.innerHTML = h4.textContent.replace(regex, match => `<mark>${match}</mark>`);
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Show "no results" message
+            const faqSection = document.querySelector('.faq-section');
+            let noResults = faqSection.querySelector('.no-results');
+            
+            if (visibleCount === 0 && searchInput.length > 0) {
+                if (!noResults) {
+                    noResults = document.createElement('div');
+                    noResults.className = 'no-results';
+                    noResults.innerHTML = `
+                        <i class="fas fa-search fa-3x"></i>
+                        <h3>No results found</h3>
+                        <p>Try different keywords or <a href="contact.html">contact support</a></p>
+                    `;
+                    faqSection.appendChild(noResults);
+                }
+            } else if (noResults) {
+                noResults.remove();
+            }
+        }
+
+        // Filter FAQ by category
+        function filterFAQ(category) {
+            const faqAccordions = document.querySelectorAll('.faq-accordion');
+            const topicTags = document.querySelectorAll('.topic-tag');
+            
+            // Update active button
+            topicTags.forEach(tag => tag.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (category === 'all') {
+                faqAccordions.forEach(accordion => {
+                    accordion.parentElement.style.display = 'block';
+                    accordion.style.display = 'block';
+                });
+            } else {
+                faqAccordions.forEach(accordion => {
+                    const categoryData = accordion.getAttribute('data-category');
+                    if (categoryData === category) {
+                        accordion.parentElement.style.display = 'block';
+                        accordion.style.display = 'block';
+                    } else {
+                        accordion.parentElement.style.display = 'none';
+                    }
+                });
+            }
+
+            // Scroll to FAQ section
+            document.querySelector('.faq-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Mark helpful functionality
+        function markHelpful(button, isHelpful) {
+            const faqHelpful = button.parentElement;
+            const buttons = faqHelpful.querySelectorAll('.helpful-btn');
+            
+            // Disable buttons after selection
+            buttons.forEach(btn => btn.disabled = true);
+            button.classList.add('selected');
+            
+            // Show thank you message
+            const thankYou = document.createElement('span');
+            thankYou.className = 'thank-you-msg';
+            thankYou.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your feedback!';
+            faqHelpful.appendChild(thankYou);
+            
+            // Track helpful count (in real app, send to server)
+            console.log(`FAQ marked as ${isHelpful ? 'helpful' : 'not helpful'}`);
+        }
+
+        // Keyboard navigation for FAQ
+        document.addEventListener('keydown', function(e) {
+            if (e.key === '/' && e.ctrlKey) {
+                e.preventDefault();
+                document.getElementById('faqSearch').focus();
+            }
+        });
+
+        // Add search shortcut hint
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBox = document.querySelector('.faq-search-box');
+            const hint = document.createElement('small');
+            hint.className = 'search-hint';
+            hint.innerHTML = '<i class="fas fa-keyboard"></i> Press Ctrl + / to search';
+            searchBox.appendChild(hint);
+
+            // Auto-expand first FAQ item
+            const firstFaq = document.querySelector('.faq-item');
+            if (firstFaq) {
+                firstFaq.classList.add('active');
+            }
+
+            // Initialize topic tags
+            const allTopicBtn = document.querySelector('.topic-tag');
+            if (allTopicBtn) {
+                allTopicBtn.classList.add('active');
+            }
+        });
+    </script>
+    
+    <style>
+        /* FAQ Page Specific Styles */
+        .faq-search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 2rem auto 0;
+        }
+
+        .faq-search-box i {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .faq-search-box input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--medium-gray);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .faq-search-box input:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .search-hint {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .popular-topics {
+            padding: 2rem 0;
+            background: var(--white);
+        }
+
+        .popular-topics h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .topic-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .topic-tag {
+            padding: 0.75rem 1.5rem;
+            background: var(--light-gray);
+            border: 2px solid transparent;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .topic-tag:hover {
+            background: var(--primary-light);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .topic-tag.active {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-dark);
+        }
+
+        .faq-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: var(--border-radius);
+            color: white;
+        }
+
+        .faq-stat-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq-stat-item i {
+            font-size: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .faq-stat-item strong {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .faq-stat-item span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .faq-category-title {
+            margin: 2rem 0 1rem;
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        .faq-q-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex: 1;
+        }
+
+        .faq-q-content i {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+
+        .faq-chevron {
+            transition: transform 0.3s ease;
+            color: var(--primary-blue);
+        }
+
+        .faq-item.active .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-helpful {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--medium-gray);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .helpful-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--medium-gray);
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .helpful-btn:hover:not(:disabled) {
+            background: var(--light-gray);
+            transform: translateY(-2px);
+        }
+
+        .helpful-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .helpful-btn.selected {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+
+        .thank-you-msg {
+            color: var(--success);
+            font-weight: 500;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+
+        .no-results i {
+            color: var(--medium-gray);
+            margin-bottom: 1rem;
+        }
+
+        .no-results h3 {
+            color: var(--text-dark);
+            margin: 1rem 0;
+        }
+
+        mark {
+            background: #ffeb3b;
+            padding: 0.1rem 0.2rem;
+            border-radius: 3px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .topic-tags {
+                flex-direction: column;
+            }
+
+            .topic-tag {
+                width: 100%;
+                text-align: center;
+            }
+
+            .faq-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .search-hint {
+                display: none;
+            }
+        }
+    </style>
+</body>
+</html>
