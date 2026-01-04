@@ -556,6 +556,11 @@ Authorization: Bearer {token}
 
 ## 📸 Screenshots
 
+### Home Page
+> The main landing page featuring the hero section, key statistics, and call-to-action buttons
+
+![Home Page](docs/screenshots/home-page.png)
+
 ### User Dashboard
 > *Screenshot placeholder - User's main dashboard showing complaint overview*
 
@@ -575,6 +580,26 @@ Authorization: Bearer {token}
 > *Screenshot placeholder - Detailed analytics and reports*
 
 ![Analytics](docs/screenshots/analytics.png)
+
+### Login Page
+> *Screenshot placeholder - User authentication page*
+
+![Login Page](docs/screenshots/login-page.png)
+
+### Complaint Details
+> *Screenshot placeholder - Detailed view of a specific complaint*
+
+![Complaint Details](docs/screenshots/complaint-details.png)
+
+### Track Status Page
+> *Screenshot placeholder - Page for tracking complaint status*
+
+![Track Status](docs/screenshots/track-status.png)
+
+### Public Dashboard
+> *Screenshot placeholder - Public-facing dashboard with statistics*
+
+![Public Dashboard](docs/screenshots/public-dashboard.png)
 
 ---
 
