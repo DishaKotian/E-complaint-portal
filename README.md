@@ -897,7 +897,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 - 📧 **Email**: kotiandishaj5335@gmail.com
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/DishaKotian/E-complaint-portal/discussions)
 - 🐛 **Issues**: [GitHub Issues](https://github.com/DishaKotian/E-complaint-portal/issues)
-- 📖 **Documentation**: [Wiki](https://github.com/DishaKotian/E-complaint-portal/wiki)
+
 
 ### Follow Us
 
