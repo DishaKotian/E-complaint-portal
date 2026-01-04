@@ -354,9 +354,6 @@ git push heroku main
 - **Disha J Kotian** - Full Stack Developer
 - **Chaithali R Shettigar** - Full Stack Developer
 
-**Department of Computer Science & Engineering**  
-**Srinivas University, Mukka**
-
 ## 🏆 Achievements
 
 - ✅ **17 Fully Functional Pages** with responsive design
