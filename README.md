@@ -11,9 +11,6 @@
 [![Made with PHP](https://img.shields.io/badge/Made%20with-PHP-777BB4.svg)](https://www.php.net/)
 
 **A modern, secure, and user-friendly platform for transparent complaint management and citizen-government interaction.**
-
-[🚀 Live Demo](#demo) • [📖 Documentation](#documentation) • [🐛 Report Bug](https://github.com/DishaKotian/E-complaint-portal/issues) • [✨ Request Feature](https://github.com/DishaKotian/E-complaint-portal/issues)
-
 ---
 
 </div>
