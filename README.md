@@ -894,7 +894,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ### Get Help
 
-- 📧 **Email**: support@DishaKotian.dev
+- 📧 **Email**: kotiandishaj5335@gmail.com
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/DishaKotian/E-complaint-portal/discussions)
 - 🐛 **Issues**: [GitHub Issues](https://github.com/DishaKotian/E-complaint-portal/issues)
 - 📖 **Documentation**: [Wiki](https://github.com/DishaKotian/E-complaint-portal/wiki)
@@ -902,8 +902,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 ### Follow Us
 
 - 🐙 **GitHub**: [@DishaKotian](https://github.com/DishaKotian)
-- 🔗 **LinkedIn**: [Disha Kotian](https://linkedin.com/in/DishaKotian)
-- 🐦 **Twitter**: [@DishaKotian](https://twitter.com/DishaKotian)
+- 🔗 **LinkedIn**: [Disha Kotian](https://www.linkedin.com/in/disha-kotian-409a29325)
 
 ### Project Links
 
